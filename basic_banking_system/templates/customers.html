@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+    <h1>Customers:</h1>
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            
+            <th style="  white-space:nowrap;" >NAME</th>
+            <th style="  white-space:nowrap;" >ACCOUNT NO</th>
+            <th style="  white-space:nowrap;" >EMAIL</th>
+            <th style="  white-space:nowrap;" >LOCATION</th>
+            <th style="  white-space:nowrap;" >BALANCE</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% for customers in data %}
+          <tr>
+            <td style=" white-space:nowrap">{{customers.name}}</td>
+            <td style=" white-space:nowrap">{{customers.account_number}}</td>
+            <td style=" white-space:nowrap">{{customers.email}}</td>
+            <td style=" white-space:nowrap">{{customers.location}}</td>
+            <td style=" white-space:nowrap">{{customers.balance}}</td>
+          </tr>
+          {% endfor %}
+          
+          
+        </tbody>
+      </table>
+
+
+{% endblock %}

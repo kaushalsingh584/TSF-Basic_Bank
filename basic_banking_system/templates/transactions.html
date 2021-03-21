@@ -1,0 +1,38 @@
+{% extends "base.html" %} 
+
+{% load static %}
+
+{% block body_block %}
+
+<h1>Transactions History:</h1>
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        
+        <div class = "w-50 p-1"><th style=" width :46%" >TRANSFERED FROM</th></div>
+        <div class = "w-50 p-1"><th style=" width :46%" >TRANSFERED TO</th></div>
+        <div class = "w-50 p-1"><th style=" width :46%" >AMOUNT</th></div>
+        <div class = "w-50 p-1"><th style=" width :46%" >TRANSACTION STATUS</th></div>
+        <!-- <th scope="col">TRANSACTION DATE</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      
+      {% for trans in data %}
+      <tr>
+        
+        <td scope="col">{{trans.debited_from}}</td>
+        <td scope="col">{{trans.credited_to}}</td>
+        <td scope="col">{{trans.amount}}</td>
+        <td scope="col">{{trans.transaction_status}}</td>
+        <!-- <th scope="col">{{trans.transaction_date}}</th> -->
+        
+       
+      </tr>
+      {% endfor %}
+      
+      
+    </tbody>
+  </table>
+
+{% endblock %}

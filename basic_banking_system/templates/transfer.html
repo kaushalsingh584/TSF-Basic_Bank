@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+
+
+
+    <h1>Banking System</h1>
+    <form action="transop" method = "POST"  >
+      {% csrf_token %}
+      <div class="form-group row">
+        <label  class="col-sm-2 col-form-label">Transfer From:</label>
+        <div class="col-lg-10">
+      <select class="form-control form-control-lg" aria-label="Default select example" name = "transfer_from">
+
+        <div class="col-lg-20">
+        <option selected>Transfer From </option>
+
+        {% for customers in data %}
+        <option value={{customers.account_number}}>{{customers.name}},Account NO: {{customers.account_number}}</option>
+        {% endfor %}
+        
+      </select>
+    </div>
+  </div>
+
+
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Transfer To:</label>
+          <div class="col-lg-10">
+        <select class="form-control form-control-lg" aria-label="Default select example" name = "transfer_to">
+
+          <div class="col-lg-20">
+          <option selected>Transfer To </option>
+
+          {% for customers in data %}
+          <option value={{customers.account_number}}>{{customers.name}} , Account NO: {{customers.account_number}}</option>
+          {% endfor %}
+          
+        </select>
+      </div>
+    </div>
+
+
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Amount:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="amount" placeholder="">
+            </div>
+          </div>
+        
+        <p>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div></p>
+      </form>
+
+      {% if error is not null %}
+      <div class="alert alert-dark" role="alert">
+        {{error}}
+        
+      </div>
+      {% endif %}
+      
+
+
+{% endblock %}
